@@ -55,13 +55,11 @@ state = {
       padding:'8px',
       cursor:'poniter'
     };
-    return (
-      <div className="App">
-        <h1>Alhamdulillah</h1>
-        <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
-        
-        { this.state.showPerson === true ?
-            <div>
+
+    let persons = null;
+    if (this.state.showPerson) {
+      persons =(
+           <div>
                 <Person 
                 name={this.state.persons[0].name} 
                 age = {this.state.persons[0].age} 
@@ -73,8 +71,17 @@ state = {
                 <Person name="shakib" age = "25"/>
                 <Person name="Rafik" age = "25"
                 >I like Football.</Person>
-          </div>:null
-      }
+          </div>
+      );
+      
+    } else {
+      
+    }
+    return (
+      <div className="App">
+        <h1>Alhamdulillah</h1>
+        <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
+        {persons}
       </div>
     );
   }
