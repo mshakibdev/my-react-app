@@ -58,7 +58,7 @@ state = {
     return (
       <div className="App">
         <h1>Alhamdulillah</h1>
-        <button style={myStyle} onClick={this.togglePersonHandler}>Switch Name</button>
+        <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
         
         { this.state.showPerson === true ?
             <div>
