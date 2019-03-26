@@ -10,9 +10,9 @@ class App extends Component {
 
 state = {
   persons :[
-    {name:"salam" ,age: 33},
-    {name: "kalam",age: 34},
-    {name:"Rahim" ,age: 32},
+    {id:'1',name:"salam" ,age: 33},
+    {id:'2',name: "kalam",age: 34},
+    {id:'3',name:"Rahim" ,age: 32},
   ],
   otherstate :[],
   showPerson:false,
@@ -31,18 +31,31 @@ state = {
     //   }
 
     deletePersonHandler = (personIndex) => {
-      const persons = this.state.persons;
+      // const persons = this.state.persons.slice();
+      const persons = [...this.state.persons]
       persons.splice(personIndex,1);
       this.setState( {persons : persons})
     };
 
-      nameChangeHandler = (event) => {
+      nameChangeHandler = (event,id) => {
+      const personIndex = this.state.persons.findIndex( p=>{
+       return  p.id === id;
+      });
+
+      const person = {
+        ...this.state.persons[personIndex] 
+
+      };
+     person.name=event.target.value;
+      // const person = Object.assign({},this.state.persons[personIndex])
+    
+      const persons = [...this.state.persons];
+
+      persons[personIndex] = person;
+
+
         this.setState ({
-          persons: [
-            {name: "salam",age : 23},
-            {name:  event.target.value,age   : 24},
-            {name: "Abdur Rahim" ,age: 22},
-          ]
+          persons: persons
         })
       }
 
@@ -71,7 +84,9 @@ state = {
                return <Person 
                click ={ () => this.deletePersonHandler(index)}
                name={singlePerson.name}
-               age = {singlePerson.age} />
+               age = {singlePerson.age}
+               key = {singlePerson.id}
+               changed={(event)=>this.nameChangeHandler(event, singlePerson.id)} />
              })}
                 
           </div>
