@@ -14,7 +14,8 @@ state = {
     {name: "kalam",age: 34},
     {name:"Rahim" ,age: 32},
   ],
-  otherstate :[]
+  otherstate :[],
+  showPerson:false,
 }
 
     switchNameHandler = (newName) => {
@@ -38,6 +39,11 @@ state = {
           ]
         })
       }
+
+      togglePersonHandler = () => {
+        const doesShow = this.state.showPerson;
+        this.setState({showPerson: !doesShow})
+      }
     
   render(){
     // className is used for tageting css for App
@@ -52,20 +58,23 @@ state = {
     return (
       <div className="App">
         <h1>Alhamdulillah</h1>
-        <button style={myStyle} onClick={this.switchNameHandler.bind(this,'Nahid')}>Switch Name</button>
-        <Person 
-        name={this.state.persons[0].name} 
-        age = {this.state.persons[0].age} 
-        click={this.switchNameHandler.bind(this,'Shishir')} 
-        />
+        <button style={myStyle} onClick={this.togglePersonHandler}>Switch Name</button>
         
-        <Person name={this.state.persons[1].name} age = {this.state.persons[1].age}
-        changed = {this.nameChangeHandler}/>
-        <Person name={this.state.persons[2].name} age = {this.state.persons[2].age}/>
-        <Person name="shakib" age = "25"/>
-        <Person name="Rafik" age = "25"
-        >I like Football.</Person>
-
+        { this.state.showPerson === true ?
+            <div>
+                <Person 
+                name={this.state.persons[0].name} 
+                age = {this.state.persons[0].age} 
+                click={this.switchNameHandler.bind(this,'Shishir')} 
+                />
+                <Person name={this.state.persons[1].name} age = {this.state.persons[1].age}
+                changed = {this.nameChangeHandler}/>
+                <Person name={this.state.persons[2].name} age = {this.state.persons[2].age}/>
+                <Person name="shakib" age = "25"/>
+                <Person name="Rafik" age = "25"
+                >I like Football.</Person>
+          </div>:null
+      }
       </div>
     );
   }
