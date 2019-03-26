@@ -60,17 +60,11 @@ state = {
     if (this.state.showPerson) {
       persons =(
            <div>
-                <Person 
-                name={this.state.persons[0].name} 
-                age = {this.state.persons[0].age} 
-                click={this.switchNameHandler.bind(this,'Shishir')} 
-                />
-                <Person name={this.state.persons[1].name} age = {this.state.persons[1].age}
-                changed = {this.nameChangeHandler}/>
-                <Person name={this.state.persons[2].name} age = {this.state.persons[2].age}/>
-                <Person name="shakib" age = "25"/>
-                <Person name="Rafik" age = "25"
-                >I like Football.</Person>
+             {this.state.persons.map( singlePerson => {
+               return <Person name={singlePerson.name}
+                         age = {singlePerson.age} />
+             })}
+                
           </div>
       );
       
