@@ -29,12 +29,13 @@ state = {
     //       ]
     //     })
     //   }
-
+  
+    
     deletePersonHandler = (personIndex) => {
-      // const persons = this.state.persons.slice();
-      const persons = [...this.state.persons]
-      persons.splice(personIndex,1);
-      this.setState( {persons : persons})
+      // const persons = this.state.persons.slice();// copy the full array
+      const persons = [...this.state.persons]//spread method means added new element with the old array and update the old array
+      persons.splice(personIndex,1);//remove one element from person
+      this.setState( {persons : persons})//updating the state
     };
 
       nameChangeHandler = (event,id) => {
@@ -46,6 +47,7 @@ state = {
         ...this.state.persons[personIndex] 
 
       };
+      
      person.name=event.target.value;
       // const person = Object.assign({},this.state.persons[personIndex])
     
@@ -59,7 +61,8 @@ state = {
         })
       }
 
-      togglePersonHandler = () => {
+      togglePersonHandler 
+      = () => {
         const doesShow = this.state.showPerson;
         this.setState({showPerson: !doesShow})
       }
@@ -78,15 +81,16 @@ state = {
     let persons = null;
 
     if (this.state.showPerson) {
+      //dynamically list print
       persons =(
            <div>
              {this.state.persons.map( (singlePerson,index) => {
                return <Person 
-               click ={ () => this.deletePersonHandler(index)}
+               click ={ () => this.deletePersonHandler(index)}//delete method
                name={singlePerson.name}
                age = {singlePerson.age}
                key = {singlePerson.id}
-               changed={(event)=>this.nameChangeHandler(event, singlePerson.id)} />
+               changed={(event)=>this.nameChangeHandler(event, singlePerson.id)} />//update method
              })}
                 
           </div>
