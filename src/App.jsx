@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import AppStyle from './App.module.css';
+import AppCss from './App.module.css';
 import Person from './Person/Person';
-import PersonStyle from './Person/Person.module.css';
+import PersonCss from './Person/Person.module.css';
 
 //class component
 class App extends Component {
@@ -70,16 +70,10 @@ state = {
   render(){
     // className is used for tageting css for App
 
-    const myStyle = {
-      backgroundColor:'green',
-      color:'white',
-      font:'inherit',
-      border:'1px solid blue',
-      padding:'8px',
-      cursor:'poniter',
-    };
+    
 
     let persons = null;
+    let btnclass = ' ';
 
     if (this.state.showPerson) {
       //dynamically list print
@@ -95,30 +89,31 @@ state = {
              })}
                 
           </div>
+          
       )
 
-      myStyle.backgroundColor ="red";
+      btnclass = AppCss.Red;
+
       
   }
 
   // let cssClasses=['red','bold'].join(' ');// ['red' 'bold']
-
     const cssClasses = [];
     if (this.state.persons.length<=2) {
-      cssClasses.push(PersonStyle.red);// ['red']
+      cssClasses.push(PersonCss.red);// ['red']
     }
     if (this.state.persons.length<=1) {
-        cssClasses.push(PersonStyle.bold);  // ['red' 'blue']    
+        cssClasses.push(PersonCss.bold);  // ['red' 'blue']    
     }
 
 
 
     return (
       
-        <div className={AppStyle.App}>
+        <div className={AppCss.App}>
           <h1>My React App</h1>
           <p className={cssClasses.join(' ')}>List of persons</p>
-          <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
+          <button className={btnclass} onClick={this.togglePersonHandler}>Toggle</button>
           {persons}
         </div>
  

@@ -1,12 +1,12 @@
 import React from 'react';
-import Person from  './Person.module.css'
+import PersonCss from  './Person.module.css'
 
 
 //function component or js arrow function in es7
 const person = (props) => {
     
     return (
-        <div className="Person" >
+        <div className={PersonCss.Person} >
             <p onClick ={props.click}>
                 I am {props.name} and I am {props.age}. Meeting after {Math.floor(Math.random()*30)} years
             </p>
