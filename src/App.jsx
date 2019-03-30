@@ -71,7 +71,8 @@ state = {
     // className is used for tageting css for App
 
     const myStyle = {
-      backgroundColor:'white',
+      backgroundColor:'green',
+      color:'white',
       font:'inherit',
       border:'1px solid blue',
       padding:'8px',
@@ -95,11 +96,27 @@ state = {
                 
           </div>
       )
+
+      myStyle.backgroundColor ="red";
       
   }
+
+  // let cssClasses=['red','bold'].join(' ');// ['red' 'bold']
+
+    const cssClasses = [];
+    if (this.state.persons.length<=2) {
+      cssClasses.push('red');// ['red']
+    }
+    if (this.state.persons.length<=1) {
+        cssClasses.push('bold');  // ['red' 'blue']    
+    }
+
+
+
     return (
       <div className="App">
-        <h1>Alhamdulillah</h1>
+        <h1>My React App</h1>
+        <p className={cssClasses.join(' ')}>List of persons</p>
         <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
         {persons}
       </div>
