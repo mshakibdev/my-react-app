@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Radium,{ StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 //class component
@@ -77,10 +76,6 @@ state = {
       border:'1px solid blue',
       padding:'8px',
       cursor:'poniter',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
     };
 
     let persons = null;
@@ -102,10 +97,7 @@ state = {
       )
 
       myStyle.backgroundColor ="red";
-      myStyle[':hover']={
-        backgroundColor:'salmon',
-        color:'black'
-      }
+      
   }
 
   // let cssClasses=['red','bold'].join(' ');// ['red' 'bold']
@@ -121,16 +113,16 @@ state = {
 
 
     return (
-      <StyleRoot>
+      
         <div className="App">
           <h1>My React App</h1>
           <p className={cssClasses.join(' ')}>List of persons</p>
           <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
           {persons}
         </div>
-      </StyleRoot>
+ 
     );
   }
 }
 
-export default Radium(App);
+export default App;
