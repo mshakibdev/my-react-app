@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Radium from 'radium';
+import Radium,{ StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 //class component
@@ -121,12 +121,14 @@ state = {
 
 
     return (
-      <div className="App">
-        <h1>My React App</h1>
-        <p className={cssClasses.join(' ')}>List of persons</p>
-        <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>My React App</h1>
+          <p className={cssClasses.join(' ')}>List of persons</p>
+          <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
