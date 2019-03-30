@@ -1,5 +1,6 @@
 import React from 'react';
 import   './Person.css'
+import Radium from 'radium';
 
 //function component or js arrow function in es7
 const person = (props) => {
@@ -18,7 +19,7 @@ const person = (props) => {
         )
 }
 
-export default person;
+export default Radium(person);
 
 // class based component -> change state -> Update dom
 // function based component -> change props -> Update dom
