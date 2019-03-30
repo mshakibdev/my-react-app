@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import './App.css';
+import AppStyle from './App.module.css';
 import Person from './Person/Person';
+import PersonStyle from './Person/Person.module.css';
 
 //class component
 class App extends Component {
@@ -85,7 +86,7 @@ state = {
       persons =(
            <div>
              {this.state.persons.map( (singlePerson,index) => {
-               return <Person 
+               return <Person
                click ={ () => this.deletePersonHandler(index)}//delete method
                name={singlePerson.name}
                age = {singlePerson.age}
@@ -104,17 +105,17 @@ state = {
 
     const cssClasses = [];
     if (this.state.persons.length<=2) {
-      cssClasses.push('red');// ['red']
+      cssClasses.push(PersonStyle.red);// ['red']
     }
     if (this.state.persons.length<=1) {
-        cssClasses.push('bold');  // ['red' 'blue']    
+        cssClasses.push(PersonStyle.bold);  // ['red' 'blue']    
     }
 
 
 
     return (
       
-        <div className="App">
+        <div className={AppStyle.App}>
           <h1>My React App</h1>
           <p className={cssClasses.join(' ')}>List of persons</p>
           <button style={myStyle} onClick={this.togglePersonHandler}>Toggle</button>

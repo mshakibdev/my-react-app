@@ -1,5 +1,5 @@
 import React from 'react';
-import   './Person.css'
+import Person from  './Person.module.css'
 
 
 //function component or js arrow function in es7
