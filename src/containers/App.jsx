@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import AppCss from './App.module.css';
-import Person from './Person/Person';
-import PersonCss from './Person/Person.module.css';
+import Persons from '../components/Persons/Persons';
+import PersonCss from '../components/Persons/Person/Person.module.css';
 
 //class component
 class App extends Component {
@@ -79,14 +79,11 @@ state = {
       //dynamically list print
       persons =(
            <div>
-             {this.state.persons.map( (singlePerson,index) => {
-               return <Person
-               click ={ () => this.deletePersonHandler(index)}//delete method
-               name={singlePerson.name}
-               age = {singlePerson.age}
-               key = {singlePerson.id}
-               changed={(event)=>this.nameChangeHandler(event, singlePerson.id)} />//update method
-             })}
+             <Persons 
+             persons = {this.state.persons}
+             clicked = {this.deletePersonHandler}
+             changed = {this.nameChangeHandler}
+             />
                 
           </div>
           
@@ -106,7 +103,7 @@ state = {
         cssClasses.push(PersonCss.bold);  // ['red' 'blue']    
     }
 
-
+ 
 
     return (
       
