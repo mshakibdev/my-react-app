@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import AppCss from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import PersonCss from '../components/Persons/Person/Person.module.css';
+import Cockpit from '../components/Cockpit/Cockpit'
 
 //class component
 class App extends Component {
@@ -73,44 +74,35 @@ state = {
     
 
     let persons = null;
-    let btnclass = ' ';
+   
+
 
     if (this.state.showPerson) {
       //dynamically list print
       persons =(
-           <div>
-             <Persons 
-             persons = {this.state.persons}
-             clicked = {this.deletePersonHandler}
-             changed = {this.nameChangeHandler}
-             />
-                
-          </div>
-          
-      )
+                  <Persons 
+                  persons = {this.state.persons}
+                  clicked = {this.deletePersonHandler}
+                  changed = {this.nameChangeHandler}
+                  />
+                   )
 
-      btnclass = AppCss.Red;
 
       
   }
 
-  // let cssClasses=['red','bold'].join(' ');// ['red' 'bold']
-    const cssClasses = [];
-    if (this.state.persons.length<=2) {
-      cssClasses.push(PersonCss.red);// ['red']
-    }
-    if (this.state.persons.length<=1) {
-        cssClasses.push(PersonCss.bold);  // ['red' 'blue']    
-    }
-
+  
  
 
     return (
       
         <div className={AppCss.App}>
-          <h1>My React App</h1>
-          <p className={cssClasses.join(' ')}>List of persons</p>
-          <button className={btnclass} onClick={this.togglePersonHandler}>Toggle</button>
+          <Cockpit 
+          showPerson ={this.state.showPerson}
+          persons= {this.state.persons}
+          toggled = {this.togglePersonHandler}
+          
+          />
           {persons}
         </div>
  
