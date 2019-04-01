@@ -73,37 +73,34 @@ state = {
 
     
 
-    let persons = null;
-   
-
-
+    let personsComponents = null;
     if (this.state.showPerson) {
       //dynamically list print
-      persons =(
+      personsComponents =(
                   <Persons 
                   persons = {this.state.persons}
                   clicked = {this.deletePersonHandler}
                   changed = {this.nameChangeHandler}
                   />
                    )
+      }
 
 
-      
-  }
-
-  
+      let cockpitComponents = null;
+      cockpitComponents = <Cockpit 
+                appTitle = {this.props.title}
+                showPerson ={this.state.showPerson}
+                persons= {this.state.persons}
+                toggled = {this.togglePersonHandler}
+                
+                />
  
 
     return (
       
         <div className={AppCss.App}>
-          <Cockpit 
-          showPerson ={this.state.showPerson}
-          persons= {this.state.persons}
-          toggled = {this.togglePersonHandler}
-          
-          />
-          {persons}
+          {cockpitComponents}
+          {personsComponents}
         </div>
  
     );

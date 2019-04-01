@@ -18,7 +18,7 @@ const cockpit = (props) => {
 
     return(
         <div className={CockpitCss.Cockpit}>
-            <h1>My React App</h1>
+            <h1>{ props.appTitle }</h1>
             <p className={cssClasses.join(' ')}>List of persons</p>
             <button className={btnclass} onClick={props.toggled}>Toggle</button>
         </div>
