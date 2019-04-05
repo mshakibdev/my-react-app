@@ -1,7 +1,7 @@
-import React ,{ Component} from 'react';
+import React ,{ PureComponent} from 'react';
 import Person from './Person/Person';
 // const persons = (props) = > () || this func. is return without return keyword if wrote in one line like this.
-class Persons extends Component {
+class Persons extends PureComponent {
   constructor(props){
     super(props);
     console.log("[Persons.js] inside constructor",props);
@@ -24,14 +24,21 @@ class Persons extends Component {
 
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("[Update Persons.js] inside shouldComponentUpdate()",nextProps,nextState);
-    // return false;
-    //return true or false
-    return nextProps.persons !== this.persons ;
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("[Update Persons.js] inside shouldComponentUpdate()",nextProps,nextState);
+  //    //return true;
+  //   //return true or false
+  //    return nextProps.persons !== this.props.persons || 
+  //           nextProps.changed !== this.props.changed || 
+  //           nextProps.clicked !== this.props.clicked  ;
+     //it handles the performance issue as it returns true if and only if the person is updated !
+
     // nextProps.persons = preivious persons
     // this.persons = Updated person
-  }
+    // more examples:
+    //nextProps.changed !== this.props.changed 
+    //nextProps.clicked !== this.props.clicked 
+  //}
 
   componentWillUpdate(nextProps, nextState) {
     console.log("[Update Persons.js] inside componentWillUpdate()",nextProps,nextState);

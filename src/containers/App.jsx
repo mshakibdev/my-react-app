@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 //import logo from './logo.svg';
 import AppCss from './App.module.css';
 import Persons from '../components/Persons/Persons';
@@ -7,7 +7,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit'
 
 //class component
-class App extends Component {
+class App extends PureComponent {
   //In statefull componenet only constructor can receive props and access it without "this" as "props.title" 
   constructor(props){
     super(props);
@@ -35,12 +35,13 @@ class App extends Component {
 
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("[Update App.js] inside shouldComponentUpdate()",nextProps,nextState);
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("[Update App.js] inside shouldComponentUpdate()",nextProps,nextState);
+  //   return nextState.persons !== this.state.persons || 
+  //   nextState.showPerson !== this.state.showPerson    
+  //   // return true ;
     
-    return true ;
-    
-  }
+  // }
 
   componentWillUpdate(nextProps, nextState) {
     console.log("[Update App.js] inside componentWillUpdate()",nextProps,nextState);
@@ -145,6 +146,8 @@ class App extends Component {
     return (
       
         <div className={AppCss.App}>
+        <br/>
+        <button onClick = { () => {this.setState({showPerson:true})}}>Show Person</button>
           {cockpitComponents}
           {personsComponents}
         </div>
