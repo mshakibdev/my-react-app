@@ -3,21 +3,48 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import AppCss from './App.module.css';
 import Persons from '../components/Persons/Persons';
-import PersonCss from '../components/Persons/Person/Person.module.css';
+// import PersonCss from '../components/Persons/Person/Person.module.css';
 import Cockpit from '../components/Cockpit/Cockpit'
 
 //class component
 class App extends Component {
+  //In statefull componenet only constructor can receive props and access it without "this" as "props.title" 
+  constructor(props){
+    super(props);
+    console.log("[App.js] inside constructor",props);
+    //old method
+    this.state = {
+      persons :[
+        {id:'1',name:"salam" ,age: 33},
+        {id:'2',name: "kalam",age: 34},
+        {id:'3',name:"Rahim" ,age: 32},
+      ],
+      otherstate :[],
+      showPerson:false,
+    }
+    
+  }
 
-state = {
-  persons :[
-    {id:'1',name:"salam" ,age: 33},
-    {id:'2',name: "kalam",age: 34},
-    {id:'3',name:"Rahim" ,age: 32},
-  ],
-  otherstate :[],
-  showPerson:false,
-}
+  componentWillMount() {
+    console.log("[App.js] inside componentWillMount()");
+    
+  }
+
+  componentDidMount() {
+    console.log("[App.js] inside componentDidMount()");
+
+  }
+  
+// Updated method
+// state = {
+//   persons :[
+//     {id:'1',name:"salam" ,age: 33},
+//     {id:'2',name: "kalam",age: 34},
+//     {id:'3',name:"Rahim" ,age: 32},
+//   ],
+//   otherstate :[],
+//   showPerson:false,
+// }
 
     // switchNameHandler = (newName) => {
     //     // console.log("clicked");
@@ -71,7 +98,8 @@ state = {
   render(){
     // className is used for tageting css for App
 
-    
+    console.log("[App.js] inside render()");
+
 
     let personsComponents = null;
     if (this.state.showPerson) {
